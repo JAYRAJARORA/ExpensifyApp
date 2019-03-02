@@ -10,6 +10,7 @@ import getVisibleExpenses from './selectors/expenses'
 import './styles/styles.scss';
 // react-dates is a calendar picker tool requires moment
 import 'react-dates/lib/css/_datepicker.css';
+// import './playground/promises';
 
 const store = createStore();
 
