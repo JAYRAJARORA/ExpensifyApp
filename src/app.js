@@ -4,13 +4,14 @@ import { Provider } from 'react-redux';
 import AppRouter from './Router/AppRouter.js';
 import 'normalize.css/normalize.css';
 import createStore from './store/configureStore';
-import {addExpense} from './actions/expenses';
+import {startSetExpenses} from './actions/expenses';
 import {setTextFilter} from './actions/filters';
 import getVisibleExpenses from './selectors/expenses'
 import './styles/styles.scss';
 // react-dates is a calendar picker tool requires moment
 import 'react-dates/lib/css/_datepicker.css';
 // import './playground/promises';
+import './firebase/firebase';
 
 const store = createStore();
 
@@ -34,5 +35,9 @@ const jsx = (
         <AppRouter />
     </Provider>
 );
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-ReactDOM.render(jsx, document.getElementById('app'));
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'));
+});
+
